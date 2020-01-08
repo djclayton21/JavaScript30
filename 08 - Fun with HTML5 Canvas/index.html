@@ -12,7 +12,6 @@
 
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
-      context.strokeStyle = '#BADA55';
       context.lineJoin = 'round';
       context.lineCap = 'round';
       context.lineWidth = 100;
@@ -24,18 +23,16 @@
 
       function draw(e) {
         if (!isDrawing) return;
-        console.log(e);
-
+        hue =
+          (e.offsetX / window.innerWidth) * 180 +
+          (e.offsetY / window.innerHeight) * 180;
         context.strokeStyle = `hsl(${hue}, 100%, 50%)`;
         context.beginPath();
         context.moveTo(lastX, lastY);
         context.lineTo(e.offsetX, e.offsetY);
-        k;
+        context.stroke();
         lastX = e.offsetX;
         lastY = e.offsetY;
-        hue =
-          (e.clientX / window.innerWidth) * 122 +
-          (e.clientY / window.innerHeight) * 123;
       }
 
       window.addEventListener('mousemove', draw);
@@ -44,8 +41,8 @@
         lastX = e.offsetX;
         lastY = e.offsetY;
         hue =
-          (e.clientX / window.innerWidth) * 122 +
-          (e.clientY / window.innerHeight) * 123;
+          (e.offsetX / window.innerWidth) * 180 +
+          (e.offsetY / window.innerHeight) * 180;
       });
       window.addEventListener('mouseup', () => (isDrawing = false));
       window.addEventListener('mouseout', () => (isDrawing = false));
