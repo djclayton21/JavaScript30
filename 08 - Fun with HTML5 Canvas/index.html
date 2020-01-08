@@ -8,10 +8,47 @@
     <canvas id="draw" width="800" height="800"></canvas>
     <script>
       const canvas = document.querySelector('#draw');
-      const context = canvase.getContext('2d');
+      const context = canvas.getContext('2d');
 
       canvas.width = window.innerWidth;
-      canvase.width = window.innerHeight;
+      canvas.height = window.innerHeight;
+      context.strokeStyle = '#BADA55';
+      context.lineJoin = 'round';
+      context.lineCap = 'round';
+      context.lineWidth = 100;
+
+      let isDrawing = false;
+      let lastX = 0;
+      let lastY = 0;
+      let hue = 0;
+
+      function draw(e) {
+        if (!isDrawing) return;
+        console.log(e);
+
+        context.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+        context.beginPath();
+        context.moveTo(lastX, lastY);
+        context.lineTo(e.offsetX, e.offsetY);
+        k;
+        lastX = e.offsetX;
+        lastY = e.offsetY;
+        hue =
+          (e.clientX / window.innerWidth) * 122 +
+          (e.clientY / window.innerHeight) * 123;
+      }
+
+      window.addEventListener('mousemove', draw);
+      window.addEventListener('mousedown', e => {
+        isDrawing = true;
+        lastX = e.offsetX;
+        lastY = e.offsetY;
+        hue =
+          (e.clientX / window.innerWidth) * 122 +
+          (e.clientY / window.innerHeight) * 123;
+      });
+      window.addEventListener('mouseup', () => (isDrawing = false));
+      window.addEventListener('mouseout', () => (isDrawing = false));
     </script>
 
     <style>
