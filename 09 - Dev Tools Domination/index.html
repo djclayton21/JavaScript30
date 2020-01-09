@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Console Tricks!</title>
+  </head>
+  <body>
+    <p onClick="makeGreen()">×BREAK×DOWN×</p>
+
+    <script>
+      const dogs = [
+        { name: 'Snickers', age: 2 },
+        { name: 'hugo', age: 8 }
+      ];
+
+      function makeGreen() {
+        const p = document.querySelector('p');
+        p.style.color = '#BADA55';
+        p.style.fontSize = '50px';
+      }
+
+      // Regular
+      console.log('hello');
+      // Interpolated
+      console.log('hello %s', 'world');
+      // Styled
+      console.log('%c hello world', 'font-size: 20px; background: red;');
+      // warning!
+      console.warn('no really, HELLO');
+      // Error :|
+      console.error('more srs now');
+      // Info
+      console.info('cheese and apple pie is tasty');
+      // Testing
+      console.assert(1 > 3, 'wrong');
+      // clearing
+      console.clear();
+      // Viewing DOM Elements
+      console.dir(document.querySelector('p'));
+      // Grouping together
+      console.group('dogs');
+      console.log('fido');
+      console.log('fido');
+      console.log('fido');
+      console.log('fido');
+      console.log('fido');
+      console.groupEnd('dogs');
+      // counting
+      console.count('george');
+      console.count('george');
+      console.count('george');
+      console.count('george');
+      console.count('george');
+      console.count('george');
+      console.count('george');
+      console.count('george');
+      console.count('george');
+      // timing
+      console.time('take time');
+      setTimeout(() => console.timeEnd('take time'), 5033);
+    </script>
+  </body>
+</html>
